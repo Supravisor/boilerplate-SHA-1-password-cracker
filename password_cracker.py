@@ -24,3 +24,7 @@ def crack_sha1_hash(hash, use_salts = False):
                 cracked_password_hash = password_crack.hexdigest()
                 if cracked_password_hash == cracked:
                     return password
+
+            else:
+                for salt in salts:
+                    pass
