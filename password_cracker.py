@@ -16,3 +16,7 @@ def crack_sha1_hash(hash, use_salts = False):
     crack = hashlib.sha1()
     crack.update(hash.encode("utf-8"))
     cracked = crack.hexdigest()
+
+    for password in passwords:
+        if not use_salts:
+            pass
