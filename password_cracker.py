@@ -20,14 +20,19 @@ def crack_sha1_hash(hash, use_salts = False):
         for password in passwords:
             if not use_salts:
                 password_crack = hashlib.sha1()
-                password_crack.update(password.encode("utf-8"))
+                password_crack.update(password.encode('utf-8'))
                 cracked_password_hash = password_crack.hexdigest()
                 if cracked_password_hash == cracked:
                     return password
 
             else:
                 for salt in salts:
-                    pass
-                    crack_salt = hashlib.sha1()
-                    crack_salt.update(str(salt + hash + salt).encode("utf-8"))
-                    cracked = crack_salt.hexdigest()
+                    salted_hash = salt + hash + salt
+                    hash_salt = hashlib.sha1()
+                    hash_salt.update(str(salted_hash).encode('utf-8'))
+                    cracked_hash = hash_salt.hexdigest()
+
+                    salted_password = salt + password + salt
+                    password_salt = hashlib.sha1()
+                    password_salt.update(salted_password.encode('utf-8'))
+                    cracked_password_salt = password_salt.hexdigest()
