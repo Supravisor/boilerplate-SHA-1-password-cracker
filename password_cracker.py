@@ -7,3 +7,8 @@ def crack_sha1_hash(hash, use_salts = False):
         with open("known-salts.txt") as salt_file:
             salts = salt_file.read()
             salts = salts.split("\n")
+
+    with open("top-10000-passwords.txt", mode="r") as password_file:
+        # get all passwords to check
+        passwords = password_file.readlines()
+        passwords = tuple(p.strip() for p in passwords)
