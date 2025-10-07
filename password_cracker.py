@@ -12,3 +12,7 @@ def crack_sha1_hash(hash, use_salts = False):
         # get all passwords to check
         passwords = password_file.readlines()
         passwords = tuple(p.strip() for p in passwords)
+
+    crack = hashlib.sha1()
+    crack.update(hash.encode("utf-8"))
+    cracked = crack.hexdigest()
