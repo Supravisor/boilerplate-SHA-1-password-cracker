@@ -22,3 +22,5 @@ def crack_sha1_hash(hash, use_salts = False):
                 password_crack = hashlib.sha1()
                 password_crack.update(password.encode("utf-8"))
                 cracked_password_hash = password_crack.hexdigest()
+                if cracked_password_hash == cracked:
+                    return password
